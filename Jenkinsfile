@@ -27,8 +27,8 @@ pipeline {
                     passwordVariable: 'DOCKERHUB_PASSWORD'
                 )]) {
                     powershell '''
-                        Write-Host "Logging in as $env:DOCKERHUB_USERNAME"
-                        $env:DOCKERHUB_PASSWORD | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
+                    $password = $env:DOCKERHUB_PASSWORD
+                    $password | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
                     '''
                 }
             }
