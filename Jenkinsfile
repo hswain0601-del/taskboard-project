@@ -18,7 +18,11 @@ pipeline {
                 bat "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
-
+        stage('Copy Docker Config') {
+            steps {
+                bat 'xcopy /E /I /Y "%USERPROFILE%\\.docker" "C:\\Windows\\System32\\config\\systemprofile\\.docker"'
+    }
+}
         stage('Push Docker Image') {
             steps {
                 bat "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
