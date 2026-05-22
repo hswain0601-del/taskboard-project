@@ -20,19 +20,19 @@ pipeline {
         }
 
         stage('Login to Docker Hub') {
-            steps {
-                withCredentials([usernamePassword(
-                    credentialsId: 'dockerhub-creds',
-                    usernameVariable: 'DOCKERHUB_USERNAME',
-                    passwordVariable: 'DOCKERHUB_PASSWORD'
-                )]) {
-                    powershell '''
-                    $password = $env:DOCKERHUB_PASSWORD
-                    $password | docker login -u $env:DOCKERHUB_USERNAME --password-stdin
-                    '''
-                }
-            }
+    steps {
+        withCredentials([string(
+            credentialsId: 'dockerhub-token',
+            variable: 'DOCKER_TOKEN'
+        )]) {
+
+            powershell '''
+            $env:DOCKER_TOKEN | docker login -u himansh0074 --password-stdin
+            '''
+
         }
+    }
+}
 
         stage('Push Docker Image') {
             steps {
