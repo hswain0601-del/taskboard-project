@@ -19,21 +19,6 @@ pipeline {
             }
         }
 
-        stage('Login to Docker Hub') {
-    steps {
-        withCredentials([string(
-            credentialsId: 'dockerhub-token',
-            variable: 'DOCKER_TOKEN'
-        )]) {
-
-            powershell '''
-            $env:DOCKER_TOKEN | docker login -u himansh0074 --password-stdin
-            '''
-
-        }
-    }
-}
-
         stage('Push Docker Image') {
             steps {
                 bat "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
