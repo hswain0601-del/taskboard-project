@@ -26,6 +26,7 @@ pipeline {
                     usernameVariable: 'DOCKERHUB_USERNAME',
                     passwordVariable: 'DOCKERHUB_PASSWORD'
                 )]) {
+                    bat 'echo Logging in as: %DOCKERHUB_USERNAME%'
                     bat 'echo %DOCKERHUB_PASSWORD% | docker login -u %DOCKERHUB_USERNAME% --password-stdin'
                 }
             }
