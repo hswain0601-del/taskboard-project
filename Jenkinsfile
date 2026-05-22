@@ -19,8 +19,8 @@ pipeline {
             }
         }
         stage('Copy Docker Config') {
-            steps {
-                bat 'xcopy /E /I /Y "%USERPROFILE%\\.docker" "C:\\Windows\\System32\\config\\systemprofile\\.docker"'
+    steps {
+        bat 'xcopy /E /I /Y "C:\\Users\\hsshe\\.docker" "C:\\Windows\\System32\\config\\systemprofile\\.docker"' 
     }
 }
         stage('Push Docker Image') {
