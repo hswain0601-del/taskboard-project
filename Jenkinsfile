@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "himansh0074/taskboard-app-project"
-        IMAGE_TAG  = "v1"
+        IMAGE_TAG  = "v2"
     }
 
     stages {
