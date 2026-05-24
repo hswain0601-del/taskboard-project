@@ -9,6 +9,7 @@ body {
   background: #f8fafc;
   color: #111827;
   min-height: 100vh;
+  font-family: Georgia, serif;
 }
 
 .layout {
