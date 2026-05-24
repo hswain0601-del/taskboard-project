@@ -15,26 +15,25 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
 
-        stage('Prepare Docker Config and Login') {
+        stage('Login to Docker Hub') {
             steps {
-                withCredentials([string(credentialsId: 'dockerhub-token', variable: 'DOCKER_TOKEN')]) {
-                    powershell '''
-                    $ErrorActionPreference = "Stop"
-                    $env:DOCKER_CONFIG = "$env:WORKSPACE\\.docker-config"
-                    New-Item -ItemType Directory -Force $env:DOCKER_CONFIG | Out-Null
-                    $env:DOCKER_TOKEN | docker login -u himansh0074 --password-stdin
-                    '''
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-creds',
+                    usernameVariable: 'DOCKERHUB_USERNAME',
+                    passwordVariable: 'DOCKERHUB_PASSWORD'
+                )]) {
+                    sh 'echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin'
                 }
             }
         }
 
         stage('Push Docker Image') {
             steps {
-                bat "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
+                sh "docker push ${IMAGE_NAME}:${IMAGE_TAG}"
             }
         }
     }
