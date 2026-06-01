@@ -2,14 +2,14 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Inter, Arial, sans-serif;
+  font-family: "Trebuchet MS", arial, sans-serif;
 }
 
 body {
-  background: #f8fafc;
+  background: #fff7ed;
   color: #111827;
   min-height: 100vh;
-  font-family: Georgia, serif;
+  font-family: "Courier New", monospace;
 }
 
 .layout {
