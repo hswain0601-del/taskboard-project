@@ -10,10 +10,10 @@
   <div class="layout">
     <aside class="sidebar">
       <div class="brand">
-        <div class="logo">TB</div>
+        <div class="logo">⚡</div>
         <div>
-          <h1>Taskboard DevOps CI/CD Demo</h1> 
-          <p>DevOps-ready work tracker</p>
+          <h1>TaskBoard Pro</h1>
+          <p>Smart Task Management</p>
         </div>
       </div>
 
@@ -25,33 +25,54 @@
       </nav>
 
       <div class="sidebar-card">
-        <h3>Project status</h3>
-        <p>Running locally on Flask now. Later we will containerize, deploy, and autoscale it.</p>
+        <h3>Productivity Tip</h3>
+        <p>
+          Focus on the top 3 priorities each day.
+          Consistency beats intensity.
+        </p>
       </div>
     </aside>
 
     <main class="main">
       <header class="hero">
         <div>
-          <span class="badge">DevOps Project</span>
-          <h2>DevOps CI/CD Auto Deploy v3 🚀</h2>
-          <p>Track tasks, deployment steps, and environment work from one clean dashboard.</p>
+          <div class="badge">🚀 TaskBoard Pro</div>
+
+          <h2>
+            Manage Tasks Smarter,
+            Not Harder.
+          </h2>
+
+          <p>
+            Organize projects, track priorities, and stay productive with a
+            modern dashboard designed for fast-moving teams.
+          </p>
         </div>
+
         <div class="hero-stats">
           <div class="stat">
-            <span>{{ tasks|length }}</span>
-            <small>Total Tasks</small>
+            <span>24</span>
+            <small>Open Tasks</small>
           </div>
+
           <div class="stat">
-            <span>01</span>
-            <small>Active App</small>
+            <span>12</span>
+            <small>Completed</small>
+          </div>
+
+          <div class="stat">
+            <span>5</span>
+            <small>Projects</small>
           </div>
         </div>
       </header>
 
       <section class="content-grid">
         <div class="card form-card">
-          <h3>Create New Task</h3>
+          <div class="card-head">
+            <h3>Create New Task</h3>
+            <span class="muted">Add and organize your work</span>
+          </div>
           <form method="POST" class="task-form">
             <input type="text" name="title" placeholder="Enter task title" required />
 
@@ -73,8 +94,8 @@
 
         <div class="card">
           <div class="card-head">
-            <h3>Task List</h3>
-            <span class="muted">Simple CRUD view</span>
+            <h3>Task Overview</h3>
+            <span class="muted">Track progress across all tasks</span>
           </div>
 
           <div class="task-list">
