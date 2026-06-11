@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         IMAGE_NAME = "himansh0074/taskboard-app-project"
-        IMAGE_TAG  = "v6"
+        IMAGE_TAG  = "v7"
     }
 
     stages {
@@ -37,4 +37,12 @@ pipeline {
             }
         }
     }
+    post {
+    success {
+        build job: 'taskboard-cd',
+        parameters: [
+            string(name: 'IMAGE_TAG', value: IMAGE_TAG)
+        ]
+    }
+}
 }
